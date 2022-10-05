@@ -3,19 +3,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color:rgb(119, 114, 114);
+  width:60%;
+  margin: auto;
+  padding:0.5rem 0;
 }
+
 .expense-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem;
-  margin: 0.5rem 0;
+  margin:0.6rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
   background-color: #a6f2d7;
-  width: 50%;
   border: 2px solid rgb(176, 38, 38);
+  width: 90%;
 }
 
 .expense-item-price {
@@ -23,7 +27,6 @@
   font-weight: bold;
   background-color: #40005d;
   padding: 0.8rem;
-  border-radius: 12px;
   color: white;
   border: 1px solid white;
 }

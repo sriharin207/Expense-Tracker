@@ -1,0 +1,64 @@
+.expense-form {
+  background-color: rgba(113, 116, 212, 0.788);
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+.form-elements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+  justify-items: center;
+  padding-top: 0.5rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input-element {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgb(209, 206, 206);
+  width: 20rem;
+  outline: none;
+}
+
+.submit-btn {
+  text-align: right;
+  padding: 0.5em;
+}
+
+.expense-submit-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #40005d;
+  padding: 0.7rem;
+  color: white;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.expense-submit-btn:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    background-color: rgba(34, 229, 37, 0.844);
+    color: black;
+}
+
+/* Media query to change input form elemensts to arrange in columns */
+@media (max-width: 1160px) {
+  .form-elements {
+    grid-template-columns: 1fr;
+  }
+}
