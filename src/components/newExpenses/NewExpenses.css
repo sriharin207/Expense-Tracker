@@ -47,13 +47,33 @@ input {
   color: white;
   border-radius: 12px;
   margin-right: 1rem;
+  transition: 0.3s;
+  border: none;
 }
 
-.expense-submit-btn:hover{
-    cursor: pointer;
-    opacity: 0.9;
-    background-color: rgba(34, 229, 37, 0.844);
-    color: black;
+.new-expense-btn {
+  padding: 1rem;
+  text-align: center;
+}
+.add-expense-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #40005d;
+  padding: 0.7rem;
+  color: white;
+  border-radius: 12px;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.expense-submit-btn:hover,
+.add-expense-btn:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: rgba(34, 229, 37, 0.844);
+  color: black;
 }
 
 /* Media query to change input form elemensts to arrange in columns */

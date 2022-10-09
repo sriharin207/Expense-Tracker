@@ -1,31 +1,36 @@
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItems";
 import Card from "../common/Cards";
+import ExpenseFilter from "../newExpenses/ExpenseFilter";
 
 const Expenses = (props) => {
+  const [year, setYear] = useState("2019");
+  const selectedYear = (year) => {
+    setYear(year);
+  };
+
+  const newFilteredArray = props.items.filter(
+    (ele) => year === ele.date.getFullYear().toString()
+  );
+  let contentToRender = (
+    <p className="usermsg">No Expenses found for the year {year}</p>
+  );
+  if (newFilteredArray.length > 0) {
+    contentToRender = newFilteredArray.map((ele) => (
+      <ExpenseItem
+        key={ele.id}
+        date={ele.date}
+        title={ele.title}
+        amount={ele.amount}
+      />
+    ));
+  }
   return (
     <Card className="container">
-      <ExpenseItem
-        date={props.items[0].date}
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-      />
-      <ExpenseItem
-        date={props.items[1].date}
-        title={props.items[1].title}
-        amount={props.items[1].amount}
-      />
-      <ExpenseItem
-        date={props.items[2].date}
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-      />
-      <ExpenseItem
-        date={props.items[2].date}
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-      />
+      <ExpenseFilter value={year} fetchSelectedYear={selectedYear} />
+      {contentToRender}
     </Card>
   );
-}
+};
 
 export default Expenses;
