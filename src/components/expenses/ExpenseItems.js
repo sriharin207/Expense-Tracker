@@ -8,7 +8,7 @@ const ExpenseItem = (props) => {
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
       <h2 className="expense-item-description">{props.title}</h2>
-      <Card className="expense-item-price">{props.amount}</Card>
+      <Card className="expense-item-price">{"$"+props.amount}</Card>
     </Card>
   );
 };

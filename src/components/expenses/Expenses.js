@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItems";
 import Card from "../common/Cards";
 import ExpenseFilter from "../newExpenses/ExpenseFilter";
+import Chart from "../chart/Chart";
+import './Expenses.css';
 
 const Expenses = (props) => {
   const [year, setYear] = useState("2019");
@@ -28,6 +30,7 @@ const Expenses = (props) => {
   return (
     <Card className="container">
       <ExpenseFilter value={year} fetchSelectedYear={selectedYear} />
+      <Chart chartData={newFilteredArray}/>
       {contentToRender}
     </Card>
   );

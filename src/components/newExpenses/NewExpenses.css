@@ -1,6 +1,6 @@
 .expense-form {
   background-color: rgba(113, 116, 212, 0.788);
-  width: 60%;
+  width:100%;
   margin: auto;
   margin-bottom: 1rem;
   border-radius: 12px;
@@ -54,6 +54,7 @@ input {
 .new-expense-btn {
   padding: 1rem;
   text-align: center;
+  width: 100%;
 }
 .add-expense-btn {
   font-size: 1.1rem;
