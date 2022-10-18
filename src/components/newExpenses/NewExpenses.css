@@ -25,6 +25,11 @@ label {
   flex-direction: column;
 }
 
+.empty{
+  border: 2px solid red;
+  box-shadow: 0 0 5px rgb(103, 102, 102);
+}
+
 input {
   font: inherit;
   padding: 0.5rem;
