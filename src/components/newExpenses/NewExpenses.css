@@ -1,5 +1,5 @@
 .expense-form {
-  background-color: rgba(113, 116, 212, 0.788);
+  background-color: rgb(147, 150, 230);
   width:100%;
   margin: auto;
   margin-bottom: 1rem;
@@ -23,11 +23,6 @@ label {
 .input-element {
   display: flex;
   flex-direction: column;
-}
-
-.empty{
-  border: 2px solid red;
-  box-shadow: 0 0 5px rgb(103, 102, 102);
 }
 
 input {

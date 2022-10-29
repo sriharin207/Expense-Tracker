@@ -6,7 +6,7 @@ import "./App.css";
 const expensesDetails = [
   {
     id: "e1",
-    title: "Toilet Paper",
+    title: "News Paper",
     amount: "94.12",
     date: new Date(2019, 7, 14),
   },

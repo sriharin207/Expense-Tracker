@@ -1,48 +1,69 @@
 import React, { useState } from "react";
+import ErrorModal from "../common/ErrorModal";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setTitle] = useState("");
   const [enteredAmount, setAmount] = useState("");
   const [enteredDate, setDate] = useState("");
-  const [isTitle, titleState] = useState(true);
-  const [isAmount, amountState] = useState(true);
-  const [isdate, dateState] = useState(true);
+  const [errorObject, seterrorObject] = useState();
 
   const titleHandler = (event) => {
     setTitle(event.target.value);
-    titleState(true);
   };
 
   const amountHandler = (event) => {
     setAmount(event.target.value);
-    amountState(true);
   };
 
   const dateHandler = (event) => {
     setDate(event.target.value);
-    dateState(true);
   };
+
+  const closeModal = () => {
+    seterrorObject(null);
+  }
 
   const formData = (event) => {
     event.preventDefault();
-    let formValid = 0;
+    let errorObj = "";
+    if (
+      enteredTitle.trim().length === 0 &&
+      enteredAmount.trim().length === 0 &&
+      enteredDate.trim().length === 0
+    ) {
+      errorObj = {
+        title: "Empty data for mandatory fields",
+        message: "Please input values for Title , Amount and Date",
+      };
+      seterrorObject(errorObj);
+      return;
+    }
+
     if (enteredTitle.trim().length === 0) {
-      titleState(false);
-      formValid += 1;
+      errorObj = {
+        title: "Empty data for mandatory field - Title",
+        message: "Please input values for Title",
+      };
+      seterrorObject(errorObj);
+      return;
     }
 
     if (enteredAmount.trim().length === 0) {
-      amountState(false);
-      formValid += 1;
+      errorObj = {
+        title: "Empty data for mandatory field - Amount",
+        message: "Please input values for Amount",
+      };
+      seterrorObject(errorObj);
+      return;
     }
 
     if (enteredDate.trim().length === 0) {
-      dateState(false);
-      formValid += 1;
-    }
-
-    if(formValid !== 0){
-      return ;
+      errorObj = {
+        title: "Empty data for mandatory field - Date",
+        message: "Please input values for Date",
+      };
+      seterrorObject(errorObj);
+      return;
     }
 
     const finalUserDate = {
@@ -60,12 +81,12 @@ const ExpenseForm = (props) => {
 
   return (
     <div>
+      {errorObject && <ErrorModal err={errorObject} onModalClick={closeModal}/>}
       <form action="" onSubmit={formData}>
         <div className="form-elements">
           <div className="input-element">
             <label htmlFor="title">Title</label>
             <input
-              className={isTitle ? "" : "empty"}
               type="text"
               placeholder="Enter title"
               onChange={titleHandler}
@@ -75,7 +96,6 @@ const ExpenseForm = (props) => {
           <div className="input-element">
             <label htmlFor="amount">Amount</label>
             <input
-              className={isAmount ? "" : "empty"}
               type="number"
               placeholder="Enter amount"
               onChange={amountHandler}
@@ -85,13 +105,12 @@ const ExpenseForm = (props) => {
           <div className="input-element">
             <label htmlFor="date">Date</label>
             <input
-              className={isdate ? "" : "empty"}
               type="date"
               max="2022-12-31"
               onChange={dateHandler}
               value={enteredDate}
             />
-          </div>  
+          </div>
         </div>
         <div className="submit-btn">
           <button
