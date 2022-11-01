@@ -1,31 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ErrorModal from "../common/ErrorModal";
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setTitle] = useState("");
-  const [enteredAmount, setAmount] = useState("");
-  const [enteredDate, setDate] = useState("");
+  const enteredTitleRef = useRef();
+  const enteredAmountRef = useRef();
+  const enteredDateRef = useRef();
   const [errorObject, seterrorObject] = useState();
-
-  const titleHandler = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const amountHandler = (event) => {
-    setAmount(event.target.value);
-  };
-
-  const dateHandler = (event) => {
-    setDate(event.target.value);
-  };
 
   const closeModal = () => {
     seterrorObject(null);
-  }
+  };
 
   const formData = (event) => {
     event.preventDefault();
     let errorObj = "";
+    let enteredTitle = enteredTitleRef.current.value;
+    let enteredAmount = enteredAmountRef.current.value;
+    let enteredDate = enteredDateRef.current.value;
     if (
       enteredTitle.trim().length === 0 &&
       enteredAmount.trim().length === 0 &&
@@ -72,16 +63,18 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-
+    console.log(finalUserDate);
     props.SubmitNewExpense(finalUserDate);
-    setTitle("");
-    setAmount("");
-    setDate("");
+    enteredTitleRef.current.value = "";
+    enteredAmountRef.current.value = "";
+    enteredDateRef.current.value = "";
   };
 
   return (
     <div>
-      {errorObject && <ErrorModal err={errorObject} onModalClick={closeModal}/>}
+      {errorObject && (
+        <ErrorModal err={errorObject} onModalClick={closeModal} />
+      )}
       <form action="" onSubmit={formData}>
         <div className="form-elements">
           <div className="input-element">
@@ -89,8 +82,7 @@ const ExpenseForm = (props) => {
             <input
               type="text"
               placeholder="Enter title"
-              onChange={titleHandler}
-              value={enteredTitle}
+              ref={enteredTitleRef}
             />
           </div>
           <div className="input-element">
@@ -98,18 +90,12 @@ const ExpenseForm = (props) => {
             <input
               type="number"
               placeholder="Enter amount"
-              onChange={amountHandler}
-              value={enteredAmount}
+              ref={enteredAmountRef}
             />
           </div>
           <div className="input-element">
             <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              max="2022-12-31"
-              onChange={dateHandler}
-              value={enteredDate}
-            />
+            <input type="date" max="2022-12-31" ref={enteredDateRef} />
           </div>
         </div>
         <div className="submit-btn">
