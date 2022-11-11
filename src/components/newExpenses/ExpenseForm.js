@@ -83,6 +83,7 @@ const ExpenseForm = (props) => {
               type="text"
               placeholder="Enter title"
               ref={enteredTitleRef}
+              className="input"
             />
           </div>
           <div className="input-element">
@@ -91,11 +92,12 @@ const ExpenseForm = (props) => {
               type="number"
               placeholder="Enter amount"
               ref={enteredAmountRef}
+              className="input"
             />
           </div>
           <div className="input-element">
             <label htmlFor="date">Date</label>
-            <input type="date" max="2022-12-31" ref={enteredDateRef} />
+            <input type="date" max="2022-12-31" ref={enteredDateRef} className="input"/>
           </div>
         </div>
         <div className="submit-btn">

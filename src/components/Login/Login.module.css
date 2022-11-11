@@ -1,0 +1,71 @@
+.loginform {
+  width: 40%;
+  border-radius: 12px;
+  margin: auto;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 1.5rem;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.formContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-bottom: 15px;
+}
+
+.formElements {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 2rem;
+  row-gap: 1.5rem;
+  align-items: center;
+}
+
+.label {
+  text-align: right;
+}
+
+.input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgb(209, 206, 206);
+  width: 75%;
+  outline: none;
+}
+
+.submitLogin {
+  font: inherit;
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: none;
+  width: 35%;
+  outline: none;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.loginTitle {
+  margin-bottom: 15px;
+  font-size: medium;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.errMsg p{
+  color: red;
+  font-weight: bold;
+}
