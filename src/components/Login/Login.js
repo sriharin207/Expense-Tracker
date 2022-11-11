@@ -17,7 +17,7 @@ const AuthLogin = () => {
   }, [authenticated]);
 
   const authenticateUser = (email, password) => {
-    if (email == "admin@gmail.com" && password == "admin1234") {
+    if (email === "admin@gmail.com" && password === "admin1234") {
       localStorage.setItem("authenticationStatus", "authenticated");
       setauthenticated(true);
     } else {
