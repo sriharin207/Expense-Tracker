@@ -11,7 +11,7 @@ const AuthLogin = () => {
 
   useEffect(() => {
     let isLogged = localStorage.getItem("authenticationStatus");
-    if (isLogged == "authenticated") {
+    if (isLogged === "authenticated") {
       setauthenticated(true);
     }
   }, [authenticated]);
