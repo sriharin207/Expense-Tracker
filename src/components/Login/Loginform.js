@@ -9,7 +9,7 @@ const LoginForm = (props) => {
     let emailID = enteredEmailId.current.value.trim();
     let password = enteredPassword.current.value.trim();
 
-    if (emailID != "" && password != "") {
+    if (emailID !== "" && password !== "") {
       props.authCheck(emailID, password);
     } else {
       props.changeErrState(true);
