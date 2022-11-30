@@ -57,14 +57,13 @@ const ExpenseForm = (props) => {
       return;
     }
 
-    const finalUserDate = {
+    const finalUserData = {
       id: Math.random().toString(),
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(finalUserDate);
-    props.SubmitNewExpense(finalUserDate);
+    props.SubmitNewExpense(finalUserData);
     enteredTitleRef.current.value = "";
     enteredAmountRef.current.value = "";
     enteredDateRef.current.value = "";

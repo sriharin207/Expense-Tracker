@@ -33,11 +33,15 @@ const ErrorModal = (props) => {
   return (
     <Fragment>
       {ReactDOM.createPortal(
-        <ErrorModalContainer onClick={props.onModalClick}/>,
+        <ErrorModalContainer onClick={props.onModalClick} />,
         document.getElementById("errorContainer")
       )}
       {ReactDOM.createPortal(
-        <ErrorModalCard title={props.err.title} message={props.err.message} onClick={props.onModalClick}/>,
+        <ErrorModalCard
+          title={props.err.title}
+          message={props.err.message}
+          onClick={props.onModalClick}
+        />,
         document.getElementById("errorModalCard")
       )}
     </Fragment>

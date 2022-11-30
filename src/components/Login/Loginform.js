@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import classes from "./Login.module.css";
 
 const LoginForm = (props) => {
   const enteredEmailId = useRef();
   const enteredPassword = useRef();
+  const [errMsg, seterrMsg] = useState("Invalid Email-ID or Password");
+
   const fetchData = (event) => {
     event.preventDefault();
     let emailID = enteredEmailId.current.value.trim();
@@ -11,12 +13,19 @@ const LoginForm = (props) => {
 
     if (emailID !== "" && password !== "") {
       props.authCheck(emailID, password);
-    } else {
+    } else if (emailID === "") {
       props.changeErrState(true);
+      seterrMsg("Blank E-mail ID");
+      enteredEmailId.current.focus();
+    } else if (password === "") {
+      props.changeErrState(true);
+      seterrMsg("Blank Password");
+      enteredPassword.current.focus();
     }
   };
   const changeErr = () => {
     props.changeErrState(false);
+    seterrMsg("Invalid E-mail or Password");
   };
 
   return (
@@ -57,7 +66,7 @@ const LoginForm = (props) => {
       </button>
       {props.userValid && (
         <div className={classes.errMsg}>
-          <p>Invalid Email-ID or Password</p>
+          <p>{errMsg}</p>
         </div>
       )}
     </form>

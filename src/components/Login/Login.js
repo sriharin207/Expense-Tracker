@@ -1,9 +1,10 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import MainHeader from "../common/MainHeader";
 import App from "../../App";
 import "../../index.css";
 import LoginForm from "./Loginform";
+import AuthContext from "../store/auth-context";
 
 const AuthLogin = () => {
   const [authenticated, setauthenticated] = useState(false);
@@ -35,8 +36,13 @@ const AuthLogin = () => {
   };
 
   return (
-    <Fragment>
-      <MainHeader checkAuth={authenticated} logout={logout} />
+    <AuthContext.Provider
+      value={{
+        loginState: authenticated,
+        logoutHandler: logout,
+      }}
+    >
+      <MainHeader />
       {!authenticated && (
         <LoginForm
           authCheck={authenticateUser}
@@ -45,7 +51,7 @@ const AuthLogin = () => {
         />
       )}
       {authenticated && <App />}
-    </Fragment>
+    </AuthContext.Provider>
   );
 };
 
